@@ -4,7 +4,7 @@
 ## Installation
 
 1. Clone the repository:
-   `git clone https://git.foxminded.ua/foxstudent107676/2.1-about-me-bot.git`
+   `git clone https://github.com/StasTolmachov/WeatherBot`
 
 2. Install dependencies:
    `go mod tidy`
