@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: weather-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: telegram-bot
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - APP_MODE=bot
+    depends_on:
+      - mongo
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: weather-worker
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - APP_MODE=worker
+    depends_on:
+      - mongo
+
+volumes:
+  mongo-data:

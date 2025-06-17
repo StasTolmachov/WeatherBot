@@ -1,0 +1,28 @@
+all: false
+dir: "{{.InterfaceDir}}"
+filename: "{{.SrcPackageName}}_mock.go"
+force-file-write: true
+formatter: goimports
+log-level: info
+structname: '{{.Mock}}{{.InterfaceName}}'
+pkgname: '{{.SrcPackageName}}'
+recursive: false
+require-template-schema-exists: true
+template: testify
+template-schema: '{{.Template}}.schema.json'
+packages:
+  foxminded/3.3-weather-forecast-bot/external/holiday:
+    config:
+      all: true
+  foxminded/3.3-weather-forecast-bot/external/weather:
+    config:
+      all: true
+  foxminded/3.3-weather-forecast-bot/external/location:
+    config:
+      all: true
+  foxminded/3.3-weather-forecast-bot/internal/services/subscription:
+    config:
+      all: true
+  foxminded/3.3-weather-forecast-bot/internal/worker:
+    config:
+      all: true
